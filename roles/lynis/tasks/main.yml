@@ -13,7 +13,7 @@
     - name: prepare lynis installation
       become: true
       shell: |
-        curl -fsSL https://packages.cisofy.com/keys/cisofy-software-public.key | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/cisofy-software-public.gpg
+        curl -fsSL https://packages.cisofy.com/keys/cisofy-software-public.key | sudo gpg --batch --yes --dearmor -o /etc/apt/trusted.gpg.d/cisofy-software-public.gpg
         echo "deb [arch=amd64,arm64 signed-by=/etc/apt/trusted.gpg.d/cisofy-software-public.gpg] https://packages.cisofy.com/community/lynis/deb/ stable main" | sudo tee /etc/apt/sources.list.d/cisofy-lynis.list
 
     - name: update and upgrade
